@@ -1,0 +1,263 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;600;700&family=Tajawal:wght@300;400;500;700&family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Egyptian Luxury Color Palette */
+  --ivory: #F8F5F0;
+  --blush: #F5E6D3;
+  --cream: #FFF8F0;
+  --royal-gold: #D4AF37;
+  --gold-thread: #FFD700;
+  --charcoal: #2C2C2C;
+  --deep-brown: #8B4513;
+  --egyptian-turquoise: #40E0D0;
+  --soft-pink: #F5C2C7;
+  --sage-green: #9CAF88;
+  
+  /* Base Colors for Website */
+  --background: var(--cream);
+  --foreground: var(--charcoal);
+  --card: #FFFFFF;
+  --card-foreground: var(--charcoal);
+  --popover: #FFFFFF;
+  --popover-foreground: var(--charcoal);
+  --primary: var(--royal-gold);
+  --primary-foreground: #FFFFFF;
+  --secondary: var(--deep-brown);
+  --secondary-foreground: #FFFFFF;
+  --muted: var(--blush);
+  --muted-foreground: #6B7280;
+  --accent: var(--egyptian-turquoise);
+  --accent-foreground: #FFFFFF;
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+  --border: #E5E7EB;
+  --input: #F9FAFB;
+  --ring: var(--royal-gold);
+  
+  /* Typography */
+  --font-arabic: 'Amiri', 'Cairo', 'Tajawal', serif;
+  --font-english: 'Poppins', 'Playfair Display', sans-serif;
+  --font-display: 'Playfair Display', serif;
+  
+  --radius: 0.75rem;
+}
+
+.dark {
+  --background: hsl(0, 0%, 8%);
+  --foreground: hsl(0, 0%, 95%);
+  --card: hsl(0, 0%, 12%);
+  --card-foreground: hsl(0, 0%, 95%);
+  --popover: hsl(0, 0%, 12%);
+  --popover-foreground: hsl(0, 0%, 95%);
+  --primary: hsl(45, 57%, 72%);
+  --primary-foreground: hsl(0, 0%, 17%);
+  --secondary: hsl(185, 35%, 20%);
+  --secondary-foreground: hsl(0, 0%, 100%);
+  --muted: hsl(0, 0%, 15%);
+  --muted-foreground: hsl(0, 0%, 65%);
+  --accent: hsl(174, 72%, 46%);
+  --accent-foreground: hsl(0, 0%, 100%);
+  --border: hsl(0, 0%, 20%);
+  --input: hsl(0, 0%, 15%);
+  --ring: hsl(45, 57%, 72%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-arabic);
+  }
+
+  /* Arabic RTL styling */
+  [dir="rtl"] {
+    font-family: var(--font-arabic);
+  }
+
+  /* English LTR styling */
+  [dir="ltr"] {
+    font-family: var(--font-english);
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: var(--muted);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--primary);
+    border-radius: 9999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--royal-gold);
+  }
+}
+
+@layer components {
+  /* Egyptian embroidery pattern decorations */
+  .embroidery-border {
+    position: relative;
+  }
+
+  .embroidery-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold-thread), transparent);
+    opacity: 0.6;
+  }
+
+  .embroidery-border::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold-thread), transparent);
+    opacity: 0.6;
+  }
+
+  /* Crown animation */
+  .crown-glow {
+    filter: drop-shadow(0 0 10px hsl(45, 57%, 72%));
+    animation: gentle-glow 3s ease-in-out infinite alternate;
+  }
+
+  @keyframes gentle-glow {
+    from {
+      filter: drop-shadow(0 0 10px hsl(45, 57%, 72%));
+    }
+    to {
+      filter: drop-shadow(0 0 20px hsl(45, 57%, 72%));
+    }
+  }
+
+  /* Hover effects for cards */
+  .card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .card-hover:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  /* WhatsApp button pulse */
+  .whatsapp-pulse {
+    animation: pulse-green 2s infinite;
+  }
+
+  @keyframes pulse-green {
+    0% {
+      box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+    }
+    70% {
+      box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+    }
+  }
+
+  /* Language toggle animation */
+  .lang-toggle {
+    transition: all 0.3s ease;
+  }
+
+  .lang-toggle:hover {
+    transform: scale(1.05);
+  }
+
+  /* Gallery image hover effect */
+  .gallery-item {
+    overflow: hidden;
+    border-radius: 0.75rem;
+  }
+
+  .gallery-item img {
+    transition: transform 0.5s ease;
+  }
+
+  .gallery-item:hover img {
+    transform: scale(1.1);
+  }
+
+  /* Form focus states */
+  .form-input:focus {
+    border-color: var(--royal-gold);
+    box-shadow: 0 0 0 3px hsla(45, 57%, 72%, 0.1);
+  }
+}
+
+@layer utilities {
+  /* Custom Egyptian utilities */
+  .text-royal-gold {
+    color: var(--royal-gold);
+  }
+
+  .text-egyptian-turquoise {
+    color: var(--egyptian-turquoise);
+  }
+
+  .text-nile-blue {
+    color: var(--nile-blue);
+  }
+
+  .bg-royal-gold {
+    background-color: var(--royal-gold);
+  }
+
+  .bg-egyptian-turquoise {
+    background-color: var(--egyptian-turquoise);
+  }
+
+  .bg-nile-blue {
+    background-color: var(--nile-blue);
+  }
+
+  .bg-ivory {
+    background-color: var(--ivory);
+  }
+
+  .border-royal-gold {
+    border-color: var(--royal-gold);
+  }
+
+  /* Direction utilities */
+  .dir-rtl {
+    direction: rtl;
+  }
+
+  .dir-ltr {
+    direction: ltr;
+  }
+
+  /* Font utilities */
+  .font-arabic {
+    font-family: var(--font-arabic);
+  }
+
+  .font-english {
+    font-family: var(--font-english);
+  }
+
+  .font-display {
+    font-family: var(--font-display);
+  }
+}
