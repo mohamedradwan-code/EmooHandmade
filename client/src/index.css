@@ -106,18 +106,29 @@
 }
 
 @layer components {
-  /* Fixed Header Styles */
-  .fixed-header {
+  /* Auto-hide Header Styles */
+  .auto-hide-header {
     position: fixed !important;
     top: 0;
     left: 0;
     right: 0;
     z-index: 9999;
     background-color: rgba(255, 248, 240, 0.95);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
-    border-bottom: 4px solid var(--royal-gold);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    box-shadow: 0 4px 30px rgba(212, 175, 55, 0.4);
+    border-bottom: 3px solid var(--royal-gold);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(0);
+  }
+
+  .auto-hide-header.header-hidden {
+    transform: translateY(-100%);
+  }
+
+  .auto-hide-header.header-visible {
+    transform: translateY(0);
+    box-shadow: 0 8px 40px rgba(212, 175, 55, 0.5);
   }
 
   /* Ensure body has proper padding for fixed header */
@@ -151,6 +162,31 @@
       rgba(0, 0, 0, 0.3) 70%,
       rgba(212, 175, 55, 0.2) 100%
     );
+  }
+
+  /* Smooth scroll for entire page */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Enhanced transitions and animations */
+  .smooth-transition {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Glowing borders effect */
+  .glow-border {
+    border: 2px solid transparent;
+    background: linear-gradient(white, white) padding-box,
+                linear-gradient(45deg, var(--royal-gold), var(--gold-thread), var(--egyptian-turquoise)) border-box;
+    border-radius: 12px;
+  }
+
+  /* Smooth hover effects */
+  .hover-glow:hover {
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.4),
+                0 0 40px rgba(212, 175, 55, 0.2);
+    transform: translateY(-2px);
   }
 
   /* Egyptian embroidery pattern decorations */

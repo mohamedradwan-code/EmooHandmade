@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLanguage } from "@/hooks/use-language";
 import { t } from "@/lib/translations";
 import LanguageToggle from "@/components/ui/language-toggle";
@@ -8,10 +8,40 @@ import { Menu, X } from "lucide-react";
 export default function Header() {
   const { language } = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      if (currentScrollY > 100) {
+        if (currentScrollY > lastScrollY) {
+          // Scrolling down - hide header
+          setIsVisible(false);
+        } else {
+          // Scrolling up - show header
+          setIsVisible(true);
+        }
+      } else {
+        // At top - always show header
+        setIsVisible(true);
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
 
   const navigation = [
     { id: 'home', label: t('nav.home', language), href: '#home' },
     { id: 'products', label: t('nav.products', language), href: '#products' },
+    { id: 'mugs', label: language === 'ar' ? 'الأكواب' : 'Mugs', href: '#mugs' },
+    { id: 'kids-clothes', label: language === 'ar' ? 'ملابس الأطفال' : 'Kids Clothes', href: '#kids-clothes' },
+    { id: 'wooden-frames', label: language === 'ar' ? 'الإطارات' : 'Frames', href: '#wooden-frames' },
+    { id: 'necklaces', label: language === 'ar' ? 'العقود' : 'Necklaces', href: '#embroidered-necklaces' },
     { id: 'gallery', label: t('nav.gallery', language), href: '#gallery' },
     { id: 'contact', label: t('nav.contact', language), href: '#contact' },
   ];
@@ -25,7 +55,7 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed-header">
+    <header className={`auto-hide-header ${isVisible ? 'header-visible' : 'header-hidden'}`}>
       <div className="container mx-auto px-6 py-6">
         <div className="flex justify-between items-center">
           {/* Language Toggle */}

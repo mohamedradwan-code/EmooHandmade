@@ -3,6 +3,10 @@ import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import Hero from "@/components/sections/hero";
 import Products from "@/components/sections/products";
+import Mugs from "@/components/sections/mugs";
+import KidsClothes from "@/components/sections/kids-clothes";
+import WoodenFrames from "@/components/sections/wooden-frames";
+import EmbroideredNecklaces from "@/components/sections/embroidered-necklaces";
 import Gallery from "@/components/sections/gallery";
 import Contact from "@/components/sections/contact";
 import WhatsAppButton from "@/components/ui/whatsapp-button";
@@ -24,6 +28,10 @@ export default function Home() {
       <main>
         <Hero />
         <Products />
+        <Mugs />
+        <KidsClothes />
+        <WoodenFrames />
+        <EmbroideredNecklaces />
         <Gallery />
         <Contact />
       </main>
