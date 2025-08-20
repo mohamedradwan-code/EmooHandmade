@@ -18,7 +18,7 @@ export default function Home() {
   }, [language]);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background body-with-fixed-header">
       <Header />
       
       <main>

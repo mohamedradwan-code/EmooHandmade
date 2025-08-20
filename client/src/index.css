@@ -106,6 +106,53 @@
 }
 
 @layer components {
+  /* Fixed Header Styles */
+  .fixed-header {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    background-color: rgba(255, 248, 240, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+    border-bottom: 4px solid var(--royal-gold);
+  }
+
+  /* Ensure body has proper padding for fixed header */
+  .body-with-fixed-header {
+    padding-top: 0; /* Remove extra padding as sections handle their own spacing */
+  }
+
+  /* Crown logo glow effect */
+  .crown-glow {
+    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
+    animation: crown-pulse 3s ease-in-out infinite;
+  }
+
+  @keyframes crown-pulse {
+    0%, 100% { 
+      filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
+      transform: scale(1);
+    }
+    50% { 
+      filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.8));
+      transform: scale(1.05);
+    }
+  }
+
+  /* Hero section background overlay */
+  .hero-overlay {
+    background: linear-gradient(
+      135deg,
+      rgba(212, 175, 55, 0.2) 0%,
+      rgba(0, 0, 0, 0.4) 30%,
+      rgba(0, 0, 0, 0.3) 70%,
+      rgba(212, 175, 55, 0.2) 100%
+    );
+  }
+
   /* Egyptian embroidery pattern decorations */
   .embroidery-border {
     position: relative;

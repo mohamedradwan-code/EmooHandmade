@@ -1,7 +1,6 @@
 import { useLanguage } from "@/hooks/use-language";
 import { t } from "@/lib/translations";
 import CrownLogo from "@/components/ui/crown-logo";
-import weddingBg from "@assets/393108505_778575217438955_153911832339221113_n_1755629410577.jpg";
 
 export default function Hero() {
   const { language } = useLanguage();
@@ -16,26 +15,34 @@ export default function Hero() {
   return (
     <section 
       id="home"
-      className="relative min-h-screen flex items-center justify-center pt-32"
+      className="relative min-h-screen flex items-center justify-center pt-48"
       style={{
-        background: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('${weddingBg}') center/cover`
+        background: `url('https://images.unsplash.com/photo-1525772764200-be829510ca22?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080&q=80') center/cover`,
+        backgroundAttachment: 'fixed'
       }}
     >
-      <div className="text-center text-white px-4 max-w-4xl">
+      <div className="absolute inset-0 hero-overlay"></div>
+      <div className="text-center text-white px-4 max-w-4xl relative z-10">
         <CrownLogo size="xl" className="text-gold-thread mb-8 crown-glow" />
         
         <h1 
-          className="text-5xl md:text-7xl font-bold mb-6 text-gold-thread"
+          className="text-5xl md:text-7xl font-bold mb-6 text-gold-thread drop-shadow-2xl"
           data-testid="hero-title"
-          style={{ fontFamily: 'var(--font-display)' }}
+          style={{ 
+            fontFamily: 'var(--font-display)',
+            textShadow: '2px 2px 8px rgba(0,0,0,0.8)'
+          }}
         >
           EmooHandmade
         </h1>
         
         <p 
-          className="text-2xl md:text-3xl mb-8 leading-relaxed text-ivory"
+          className="text-2xl md:text-3xl mb-8 leading-relaxed text-ivory drop-shadow-lg"
           data-testid="hero-subtitle"
-          style={{ fontFamily: 'var(--font-arabic)' }}
+          style={{ 
+            fontFamily: 'var(--font-arabic)',
+            textShadow: '1px 1px 4px rgba(0,0,0,0.8)'
+          }}
         >
           {t('hero.subtitle', language)}
         </p>

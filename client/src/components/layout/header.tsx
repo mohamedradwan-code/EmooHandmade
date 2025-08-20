@@ -25,7 +25,7 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-cream/95 backdrop-blur-sm shadow-2xl z-50 border-b-4 border-royal-gold">
+    <header className="fixed-header">
       <div className="container mx-auto px-6 py-6">
         <div className="flex justify-between items-center">
           {/* Language Toggle */}
